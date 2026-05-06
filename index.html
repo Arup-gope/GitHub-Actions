@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arup Kumar Gope | DevOps Engineer</title>
+
   <style>
     * {
       margin: 0;
@@ -15,10 +16,10 @@
     body {
       font-family: Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, #00f5ff55, transparent 35%),
-        radial-gradient(circle at bottom right, #8a2be255, transparent 35%),
+        radial-gradient(circle at top left, #00e5ff55, transparent 35%),
+        radial-gradient(circle at bottom right, #8b5cf655, transparent 35%),
         linear-gradient(135deg, #07111f, #111827);
-      color: #fff;
+      color: #ffffff;
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -36,23 +37,24 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
+      z-index: 100;
       background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     }
 
     nav {
-      height: 72px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
 
     .logo {
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 1px;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
 
     .logo span {
@@ -61,18 +63,21 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
+      flex-wrap: wrap;
       font-size: 0.95rem;
     }
 
     .nav-links a {
-      opacity: 0.8;
-      transition: 0.3s;
+      color: #dbeafe;
+      opacity: 0.85;
+      transition: 0.3s ease;
     }
 
     .nav-links a:hover {
-      opacity: 1;
       color: #00e5ff;
+      opacity: 1;
+      transform: translateY(-2px);
     }
 
     .hero {
@@ -80,23 +85,23 @@
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
       align-items: center;
-      gap: 40px;
-      padding: 70px 0;
+      gap: 42px;
+      padding: 80px 0;
     }
 
     .badge {
       display: inline-block;
       padding: 10px 18px;
       border-radius: 999px;
+      margin-bottom: 24px;
+      color: #bff7ff;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(16px);
-      margin-bottom: 24px;
-      color: #bff7ff;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
       line-height: 1;
       margin-bottom: 24px;
     }
@@ -107,11 +112,15 @@
       color: transparent;
     }
 
-    .hero p {
-      font-size: 1.15rem;
+    .hero p,
+    .section-subtitle {
+      font-size: 1.08rem;
       line-height: 1.8;
       color: #dbeafe;
-      max-width: 720px;
+      max-width: 760px;
+    }
+
+    .hero p {
       margin-bottom: 34px;
     }
 
@@ -124,16 +133,17 @@
     .btn {
       padding: 14px 24px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 800;
+      color: #ffffff;
       background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(14px);
-      transition: 0.35s;
-      font-weight: 700;
+      transition: 0.35s ease;
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, #00e5ff, #8b5cf6);
       color: #04111f;
+      background: linear-gradient(135deg, #00e5ff, #8b5cf6);
     }
 
     .btn:hover {
@@ -148,24 +158,25 @@
       border: 1px solid rgba(255, 255, 255, 0.22);
       backdrop-filter: blur(20px);
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-      transition: 0.4s;
+      transition: 0.4s ease;
     }
 
     .profile-card:hover {
       transform: rotate(1deg) translateY(-8px);
+      box-shadow: 0 35px 90px rgba(0, 229, 255, 0.18);
     }
 
     .avatar {
       width: 145px;
       height: 145px;
-      border-radius: 50%;
       margin: 0 auto 24px;
-      background: linear-gradient(135deg, #00e5ff, #8b5cf6);
+      border-radius: 50%;
       display: grid;
       place-items: center;
       font-size: 3rem;
       font-weight: 900;
       color: #07111f;
+      background: linear-gradient(135deg, #00e5ff, #8b5cf6);
       box-shadow: 0 0 60px rgba(0, 229, 255, 0.4);
     }
 
@@ -185,15 +196,13 @@
     }
 
     .section-title {
-      font-size: 2.3rem;
+      font-size: 2.35rem;
       margin-bottom: 18px;
     }
 
     .section-subtitle {
-      color: #cbd5e1;
       margin-bottom: 36px;
-      max-width: 720px;
-      line-height: 1.8;
+      color: #cbd5e1;
     }
 
     .grid {
@@ -202,46 +211,62 @@
       gap: 22px;
     }
 
-    .card {
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card,
+    .timeline-item,
+    .contact-box {
+      position: relative;
+      overflow: hidden;
       padding: 28px;
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.09);
       border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(18px);
-      transition: 0.35s;
-      position: relative;
-      overflow: hidden;
+      transition: 0.35s ease;
     }
 
-    .card::before {
+    .card::before,
+    .timeline-item::before,
+    .contact-box::before {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, transparent, rgba(0, 229, 255, 0.14));
       opacity: 0;
-      transition: 0.35s;
+      transition: 0.35s ease;
     }
 
-    .card:hover::before {
+    .card:hover::before,
+    .timeline-item:hover::before,
+    .contact-box:hover::before {
       opacity: 1;
     }
 
-    .card:hover {
+    .card:hover,
+    .timeline-item:hover,
+    .contact-box:hover {
       transform: translateY(-10px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
       border-color: rgba(0, 229, 255, 0.55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     }
 
-    .card h3 {
+    .card h3,
+    .timeline-item h3 {
+      position: relative;
       margin-bottom: 12px;
       color: #67e8f9;
-      position: relative;
     }
 
-    .card p, .card li {
+    .card p,
+    .card li,
+    .timeline-item p,
+    .contact-box p {
+      position: relative;
       color: #dbeafe;
       line-height: 1.7;
-      position: relative;
     }
 
     ul {
@@ -266,10 +291,10 @@
     .skill {
       padding: 12px 16px;
       border-radius: 999px;
+      color: #e0f2fe;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #e0f2fe;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .skill:hover {
@@ -283,16 +308,20 @@
     }
 
     .timeline-item {
-      padding: 26px;
       border-left: 3px solid #00e5ff;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
     }
 
     .timeline-item span {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 8px;
       color: #93c5fd;
       font-size: 0.95rem;
+    }
+
+    .contact-box {
+      display: grid;
+      gap: 18px;
     }
 
     footer {
@@ -302,20 +331,19 @@
       border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    @media (max-width: 850px) {
-      .hero, .grid {
+    @media (max-width: 900px) {
+      .hero,
+      .grid,
+      .grid.two {
         grid-template-columns: 1fr;
       }
 
       nav {
-        height: auto;
-        padding: 20px 0;
+        padding: 18px 0;
         flex-direction: column;
-        gap: 16px;
       }
 
       .nav-links {
-        flex-wrap: wrap;
         justify-content: center;
       }
 
@@ -326,16 +354,19 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <nav class="container">
       <div class="logo">Arup<span>.</span>DevOps</div>
+
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -344,15 +375,20 @@
   <main class="container">
     <section class="hero">
       <div>
-        <div class="badge">Cloud Native • DevOps • Kubernetes • AWS</div>
+        <div class="badge">Cloud Native • DevOps • Kubernetes • AWS • GitOps</div>
+
         <h1>Hi, I’m <span>Arup Kumar Gope</span></h1>
+
         <p>
-          DevOps and Cloud Engineer focused on building reliable, automated, and observable infrastructure.
-          I work with Kubernetes, AWS, Terraform, CI/CD pipelines, containers, and modern monitoring stacks.
+          Certified DevOps Engineer with hands-on experience in AWS cloud, Kubernetes,
+          Terraform, CI/CD automation, GitOps, and scalable cloud-native infrastructure.
+          I enjoy building reliable systems, automating deployments, and improving observability.
         </p>
+
         <div class="buttons">
           <a class="btn primary" href="#contact">Contact Me</a>
-          <a class="btn" href="#skills">View Skills</a>
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/Arup-gope" target="_blank">GitHub</a>
         </div>
       </div>
 
@@ -360,8 +396,7 @@
         <div class="avatar">AG</div>
         <h2>DevOps Engineer</h2>
         <p>
-          Certified in DevNet, Kubernetes CKA, AWS Solutions Architect Associate,
-          and Terraform Associate.
+          AWS • Kubernetes • Terraform • Jenkins • GitHub Actions • ArgoCD • Prometheus • Grafana
         </p>
       </div>
     </section>
@@ -369,100 +404,162 @@
     <section id="about">
       <h2 class="section-title">About Me</h2>
       <p class="section-subtitle">
-        I specialize in cloud-native engineering, automation, and infrastructure reliability.
-        My work combines networking knowledge, DevOps practices, container orchestration,
-        and observability to support scalable production systems.
+        I specialize in cloud-native engineering, automation, infrastructure reliability,
+        and DevOps practices. My work combines AWS, Kubernetes, Terraform, CI/CD pipelines,
+        GitOps, Linux, networking, and observability to support secure and scalable systems.
       </p>
     </section>
 
     <section id="skills">
       <h2 class="section-title">Technical Skills</h2>
-      <p class="section-subtitle">Technologies I use to build, deploy, monitor, and automate infrastructure.</p>
+      <p class="section-subtitle">
+        Technologies I use to build, deploy, secure, monitor, and automate modern infrastructure.
+      </p>
 
       <div class="skills">
-        <span class="skill">AWS</span>
+        <span class="skill">AWS EKS</span>
+        <span class="skill">EC2</span>
+        <span class="skill">S3</span>
+        <span class="skill">VPC</span>
         <span class="skill">Docker</span>
         <span class="skill">Kubernetes</span>
+        <span class="skill">Helm</span>
         <span class="skill">Terraform</span>
+        <span class="skill">Ansible</span>
+        <span class="skill">Jenkins</span>
         <span class="skill">GitHub Actions</span>
-        <span class="skill">GitLab CI/CD</span>
+        <span class="skill">ArgoCD</span>
         <span class="skill">Linux</span>
-        <span class="skill">Networking</span>
+        <span class="skill">Python</span>
+        <span class="skill">Bash</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">Redis</span>
         <span class="skill">Prometheus</span>
         <span class="skill">Grafana</span>
-        <span class="skill">EFK Stack</span>
-        <span class="skill">Jaeger</span>
-        <span class="skill">OpenTelemetry</span>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <h2 class="section-title">Certifications</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>DevNet Engineer</h3>
-          <p>Certified in network automation and programmable infrastructure practices.</p>
-        </div>
-        <div class="card">
-          <h3>Certified Kubernetes Administrator</h3>
-          <p>Hands-on Kubernetes administration, workloads, scheduling, networking, and cluster operations.</p>
-        </div>
-        <div class="card">
-          <h3>AWS Solutions Architect Associate</h3>
-          <p>Cloud architecture, secure infrastructure design, scalability, and resilient AWS workloads.</p>
-        </div>
-        <div class="card">
-          <h3>Terraform Associate</h3>
-          <p>Infrastructure as Code, reusable modules, remote state, and cloud provisioning workflows.</p>
-        </div>
+        <span class="skill">CloudWatch</span>
+        <span class="skill">Trivy</span>
+        <span class="skill">TCP/IP</span>
+        <span class="skill">DNS</span>
       </div>
     </section>
 
     <section id="experience">
       <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">
+        Practical experience across DevOps, cloud platforms, data center operations,
+        automation, Linux infrastructure, and enterprise networking.
+      </p>
+
       <div class="timeline">
         <div class="timeline-item">
-          <span>Operations Engineer</span>
-          <h3>Canopus IT Solutions GmbH</h3>
+          <span>07/2025 - Present</span>
+          <h3>Junior DevOps Engineer — Canopus IT Solutions GmbH</h3>
           <p>
-            Working with cloud-native operations, automation, monitoring, infrastructure support,
-            and DevOps tooling.
+            Automating AWS infrastructure using reusable Terraform modules across EC2, RDS,
+            VPC, S3, EKS, and CloudFront. Building CI/CD pipelines with Jenkins and GitHub Actions,
+            deploying microservices on AWS EKS with Argo CD, and implementing monitoring with
+            Prometheus and Grafana.
           </p>
         </div>
 
         <div class="timeline-item">
-          <span>Assistant Engineer</span>
-          <h3>Digicon Telecommunication Limited</h3>
+          <span>01/2022 - 06/2025</span>
+          <h3>Data Center Operations Engineer — Akamai Technologies</h3>
           <p>
-            Built practical experience in networking, infrastructure operations,
-            technical troubleshooting, and system reliability.
+            Managed large-scale Linux server fleets and distributed network infrastructure.
+            Automated provisioning and configuration with Ansible, supported high-availability
+            production systems, and resolved complex TCP/IP, DNS, routing, and switching issues.
           </p>
         </div>
 
         <div class="timeline-item">
-          <span>M.Eng. Information Technology</span>
-          <h3>Frankfurt University of Applied Sciences</h3>
+          <span>01/2019 - 07/2019</span>
+          <h3>Network Engineer — Digicon Telecommunication Limited</h3>
           <p>
-            Pursuing advanced studies in IT systems, cloud technologies, and modern engineering practices.
+            Provisioned and secured enterprise network infrastructure using Cisco routers,
+            switches, and firewalls. Monitored core and transmission networks and provided
+            technical support for reliable customer service delivery.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2 class="section-title">Featured Focus Areas</h2>
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">
+        Academic background in information technology, engineering, and technical systems.
+      </p>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>M.Eng. in Information Technology</h3>
+          <p>Frankfurt University of Applied Sciences, Germany</p>
+        </div>
+
+        <div class="card">
+          <h3>B.Sc. in Electrical and Electronic Engineering</h3>
+          <p>Ahsanullah University of Science and Technology, Bangladesh</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-subtitle">
+        Industry-recognized certifications in Kubernetes administration, AWS cloud architecture,
+        and Infrastructure as Code.
+      </p>
+
       <div class="grid">
         <div class="card">
-          <h3>CI/CD Automation</h3>
-          <p>Designing deployment pipelines using GitHub Actions and GitLab CI/CD.</p>
+          <h3>Certified Kubernetes Administrator</h3>
+          <p>Issued by The Linux Foundation</p>
         </div>
+
         <div class="card">
-          <h3>Kubernetes Operations</h3>
-          <p>Managing containerized workloads, services, deployments, and cluster resources.</p>
+          <h3>AWS Certified Solutions Architect – Associate</h3>
+          <p>Issued by Amazon Web Services</p>
         </div>
+
         <div class="card">
-          <h3>Observability</h3>
-          <p>Monitoring infrastructure with Prometheus, Grafana, EFK, Jaeger, and OpenTelemetry.</p>
+          <h3>HashiCorp Certified: Terraform Associate</h3>
+          <p>Issued by HashiCorp</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        Selected cloud-native and DevOps projects focused on automation, Kubernetes,
+        GitOps, and production-style deployment workflows.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Automated E-commerce Deployment via AWS EKS & GitOps</h3>
+          <p>
+            Provisioned AWS EKS infrastructure using Terraform, built CI/CD pipelines with Jenkins,
+            scanned Docker images with Trivy, and implemented GitOps delivery using Argo CD and Helm.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>VProfile Application Deployment on Kubernetes</h3>
+          <p>
+            Deployed a three-tier application on Kubernetes with AWS services including EBS, S3,
+            and Route 53. Integrated MySQL, Redis, and Tomcat for a complete application stack.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Observability & Monitoring Stack</h3>
+          <p>
+            Designed monitoring workflows using Prometheus, Grafana, CloudWatch, and alerting
+            practices to improve visibility, performance analysis, and incident response.
+          </p>
         </div>
       </div>
     </section>
@@ -470,14 +567,20 @@
     <section id="contact">
       <h2 class="section-title">Let’s Connect</h2>
       <p class="section-subtitle">
-        Interested in DevOps, cloud infrastructure, Kubernetes, automation, or reliable systems?
-        Let’s build something solid.
+        Interested in DevOps, Kubernetes, cloud infrastructure, CI/CD, GitOps,
+        or reliable systems engineering? Let’s connect.
       </p>
 
-      <div class="buttons">
-        <a class="btn primary" href="mailto:your-email@example.com">Email Me</a>
-        <a class="btn" href="https://github.com/Arup-gope" target="_blank">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+      <div class="contact-box">
+        <p><strong>Email:</strong> <a href="mailto:gope.aust@gmail.com">gope.aust@gmail.com</a></p>
+        <p><strong>Location:</strong> Frankfurt am Main, Germany</p>
+
+        <div class="buttons">
+          <a class="btn primary" href="mailto:gope.aust@gmail.com">Email Me</a>
+          <a class="btn" href="https://github.com/Arup-gope" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/arup-kumar-gope" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://www.credly.com/users/arup-kumar-gope" target="_blank">Credly</a>
+        </div>
       </div>
     </section>
   </main>
@@ -485,6 +588,5 @@
   <footer>
     <p>© 2026 Arup Kumar Gope. Built with HTML, CSS, and DevOps energy.</p>
   </footer>
-
 </body>
 </html>
